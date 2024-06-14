@@ -1,4 +1,4 @@
-namespace Salies.API
+namespace Sales.API
 {
     public class WeatherForecast
     {
