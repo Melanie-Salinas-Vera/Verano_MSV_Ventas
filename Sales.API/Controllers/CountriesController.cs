@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sales.API.Data;
 using Sales.Shared.Entities;
+using System.Data.Entity;
 
 namespace Sales.API.Controllers
 {
@@ -26,7 +27,12 @@ namespace Sales.API.Controllers
             return Ok(country);
         }
 
+        [HttpGet]
 
+        public async Task<IActionResult> GetAsync()
+        {
+            return Ok(await _context.Countries.ToListAsync()); 
+        }
 
 
 
