@@ -1,0 +1,53 @@
+﻿@using System.Collections
+
+@typeparam Titem
+
+@if (MyList == null)
+{
+    @if (Loading == null)
+    {
+        <div class="align-items-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831">
+        </div>
+    }
+    else
+    {
+        @Loading
+    }
+}
+else
+{
+    @if (MyList.Count == 0)
+    {
+        @if (NoRecords == null)
+        {
+            <div class="aling-items-center">
+                <p> No hay registros para mostrar. </p>
+            </div>
+        }
+        else
+        {
+            @NoRecords
+        }
+    }
+    else
+    {
+        @Body
+    }
+}
+@code {
+    [Parameter]
+    public RenderFragment? Loading { get; set; }
+
+    [Parameter]
+    public RenderFragment? NoRecords { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public RenderFragment Body { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public IList<Titem> MyList { get; set; } = null!;
+
+}
